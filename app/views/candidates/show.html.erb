@@ -16,7 +16,7 @@
 </p>
 
 <p>
-  <strong>Em addr:</strong>
+  <strong>Email Address:</strong>
   <%= @candidate.em_addr %>
 </p>
 
@@ -31,14 +31,26 @@
 </p>
 
 <p>
-  <strong>U:</strong>
+  <strong>Username:</strong>
   <%= @candidate.u_id %>
 </p>
 
 <p>
-  <strong>P word:</strong>
+  <strong>Password:</strong>
   <%= @candidate.p_word %>
 </p>
+<p>
+  <strong>Link:</strong>
+  <%= @candidate.link %> 
+<p>
+  <%= link_to "Resume", @candidate.resume.url %>
+</p>
+<p>
+  <%= link_to "Delete Resume", delete_attachment_path(id: @candidate.id, kind: "resume"), class: "btn btn-danger btn-xs" %>
+</p>
 
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-<%= link_to 'Back', candidates_path %>
+
+<div class=:"btn-group">
+<%= link_to 'Edit', edit_candidate_path(@candidate), class: "btn btn-success" %> |
+<%= link_to 'Back', candidates_path, class: "btn btn-danger" %>
+</div>

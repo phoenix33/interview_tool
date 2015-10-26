@@ -21,6 +21,18 @@ class CandidatesController < ApplicationController
   def edit
   end
 
+  def delete_attachment
+    @candidate = Candidate.find(params[:id])
+    if params[:kind] == "resume"
+      @candidate.resume_file_name = nil
+      @candidate.resume_content_type = nil
+      @candidate.resume_file_size = nil
+      @candidate.resume_updated_at = nil
+      @candidate.save
+    end
+      redirect_to @candidate
+  end
+
   # POST /candidates
   # POST /candidates.json
   def create
@@ -69,6 +81,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :phone_number, :em_addr, :city, :state, :u_id, :p_word)
+      params.require(:candidate).permit(:first_name, :last_name, :phone_number, :em_addr, :city, :state, :u_id, :p_word, :resume, :link)
     end
 end

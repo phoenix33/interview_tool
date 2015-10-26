@@ -1,41 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Candidates</h1>
+<h1>Candidates Information </h1>
+<p><%= link_to new_candidate_path do %>
+  <h3>Add New Candidate<h3/> 
+  <% end %>
+</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Phone number</th>
-      <th>Em addr</th>
-      <th>City</th>
-      <th>State</th>
-      <th>U</th>
-      <th>P word</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div class="row">
     <% @candidates.each do |candidate| %>
-      <tr>
-        <td><%= candidate.first_name %></td>
-        <td><%= candidate.last_name %></td>
-        <td><%= candidate.phone_number %></td>
-        <td><%= candidate.em_addr %></td>
-        <td><%= candidate.city %></td>
-        <td><%= candidate.state %></td>
-        <td><%= candidate.u_id %></td>
-        <td><%= candidate.p_word %></td>
-        <td><%= link_to 'Show', candidate %></td>
-        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
-        <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-md-3">
+        <div class="well">
+        
+           <h2><%= link_to candidate.first_name, candidate %></h2>
+           <h2><%= link_to candidate.last_name, candidate %></h2>
+
+           <% if candidate.resume_file_name != nil %>
+          <%= link_to "Resume", @candidate.resume.url(:medium), class: "img-responsive" %><br/ >
+          <% end %>
+
+          <p>
+            <%= link_to edit_candidate_path(candidate) do %><span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+          
+          <%= link_to candidate, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </p>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
 
-<%= link_to 'New Candidate', new_candidate_path %>
+
+

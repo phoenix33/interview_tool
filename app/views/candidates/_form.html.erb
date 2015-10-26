@@ -24,7 +24,7 @@
     <%= f.text_field :phone_number %>
   </div>
   <div class="field">
-    <%= f.label :em_addr %><br>
+    <%= f.label :email_address %><br>
     <%= f.text_field :em_addr %>
   </div>
   <div class="field">
@@ -36,14 +36,21 @@
     <%= f.text_field :state %>
   </div>
   <div class="field">
-    <%= f.label :u_id %><br>
+    <%= f.label :username %><br>
     <%= f.text_field :u_id %>
   </div>
   <div class="field">
-    <%= f.label :p_word %><br>
+    <%= f.label :password %><br>
     <%= f.text_field :p_word %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field form-group">
+    <%= f.label "Upload Your Resume Here" %><br>
+    <%= f.file_field :Resume %>
   </div>
+  <div class="form-group">
+    <%= f.label "Paste Applicable Links Here( Github, Stack Overflow, LinkedIn, etc)" %><br />
+    <%= f. text_area :link %><br />
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div><br />
 <% end %>
